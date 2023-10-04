@@ -4,25 +4,34 @@
 //3, 5 -> 243 (3⁵)
 //2, 4 -> 16
 
-Console.Write("Введите число A: ");
-int numberA= Convert.ToInt32(Console.ReadLine());
-Console.Write("Введите число B: ");
-int numberB= Convert.ToInt32(Console.ReadLine());
-
-ToDegree(numberA, numberB);
-
-void ToDegree(int a, int b)
+int Prompt (string message)
 {
-    int result = 1;
-    for (int i = 1; i <= b; i++)
-    {
-        result = result * a;
-    }
-    Console.WriteLine(result);
+System.Console.Write(message);
+string readInput = System.Console.ReadLine();
+int result = int.Parse(readInput);
+return result;
 }
-
-int ReadInt(string message)
+int Power(int powerBase, int exponent)
 {
-    Console.WriteLine(message);
-    return Convert.ToInt32(Console.ReadLine());
+int power = 1;
+for (int i = 0; i < exponent; i ++)
+{
+power *= powerBase;
+}
+return power;
+}
+bool ValidateExponent(int exponent)
+{
+if (exponent < 0)
+{
+System.Console.WriteLine("Показатель не должен быть меньше 0");
+return false;
+}
+return true;
+}
+int powerBase = Prompt("Введите основание: ");
+int exponent = Prompt ("Введите показатель: ");
+if (ValidateExponent (exponent))
+{
+System.Console.WriteLine($"Число {powerBase} в степени {exponent} ровно {Power (powerBase, exponent)}");
 }
